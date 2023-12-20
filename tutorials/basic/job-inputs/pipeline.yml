@@ -4,7 +4,7 @@ resources:
     type: git
     source:
       uri: https://github.com/Nec2005/concourse-tutorial.git
-      branch: develop
+      branch: dev
 
   - name: resource-app
     type: git
@@ -16,6 +16,7 @@ jobs:
     public: true
     plan:
       - get: resource-tutorial
+        trigger: true
       - get: resource-app
         trigger: true
       - task: web-app-tests
