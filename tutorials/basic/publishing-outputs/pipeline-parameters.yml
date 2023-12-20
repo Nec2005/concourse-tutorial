@@ -3,7 +3,7 @@ resources:
   - name: resource-tutorial
     type: git
     source:
-      uri: https://github.com/starkandwayne/concourse-tutorial.git
+      uri: https://github.com/Nec2005/concourse-tutorial.git
       branch: develop
   - name: resource-gist
     type: git
@@ -23,7 +23,7 @@ jobs:
           platform: linux
           image_resource:
             type: registry-image
-            source: {repository: starkandwayne/concourse}
+            source: {repository: Nec2005/concourse}
 
           inputs:
             - name: resource-tutorial

@@ -9,7 +9,7 @@ resources:
   - name: tutorial
     type: git
     source:
-      uri: https://github.com/starkandwayne/concourse-tutorial.git
+      uri: https://github.com/Nec2005/concourse-tutorial.git
       branch: develop
   - name: notify
     type: slack-notification

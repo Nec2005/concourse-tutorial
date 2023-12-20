@@ -31,5 +31,5 @@ resources:
   - name: github-release-shield
     type: github-release
     source:
-      user: starkandwayne
+      user: Nec2005
       repository: shield

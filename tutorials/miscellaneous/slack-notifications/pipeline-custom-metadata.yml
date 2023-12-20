@@ -13,7 +13,7 @@ resources:
   - name: tutorial
     type: git
     source:
-      uri: https://github.com/starkandwayne/concourse-tutorial.git
+      uri: https://github.com/Nec2005/concourse-tutorial.git
       branch: develop
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
         ensure:
           put: notify
           params:
-            username: starkandwayne-ci
-            icon_url: https://www.starkandwayne.com/assets/images/shield-blue-50x50.png
+            username: Nec2005-ci
+            icon_url: https://www.Nec2005.com/assets/images/shield-blue-50x50.png
             text_file: notify_message/message
             silent: true
