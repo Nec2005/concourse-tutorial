@@ -4,7 +4,7 @@ resources:
     type: git
     source:
       uri: https://github.com/Nec2005/concourse-tutorial.git
-      branch: develop
+      branch: dev
 
 jobs:
   - name: job-hello-world
