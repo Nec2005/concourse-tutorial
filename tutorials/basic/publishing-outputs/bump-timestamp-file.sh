@@ -4,7 +4,7 @@ set -e # fail fast
 set -x # print commands
 
 
-git -version
+git --version
 git clone resource-gist updated-gist
 
 cd updated-gist
