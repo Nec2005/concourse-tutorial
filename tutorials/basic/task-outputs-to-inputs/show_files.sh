@@ -1,4 +1,4 @@
 #!/bin/sh
 
 ls myfolder/*
-cat file4
+cat myfolder/file4
