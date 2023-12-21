@@ -1,9 +1,11 @@
 #!/bin/sh
 
-mkdir some-files
-echo "file1" > some-files/file1
-echo "file2" > some-files/file2
-echo "file3" > some-files/file3
-echo "file4" > some-files/file4
+#mkdir myfolder
+cd myfolder
+echo "file1" > file1
+echo "file2" > file2
+echo "file3" > file3
+echo "this is file4" > file4
 
-ls some-files/*
+ls -al
+cat file4

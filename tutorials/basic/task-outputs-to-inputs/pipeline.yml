@@ -4,14 +4,14 @@ resources:
     type: git
     source:
       uri: https://github.com/Nec2005/concourse-tutorial.git
-      branch: develop
+      branch: dev
 
 jobs:
   - name: job-pass-files
     public: true
     plan:
       - get: resource-tutorial
-      - task: create-some-files
+      - task: create-new-folder
         config:
           platform: linux
           image_resource:
@@ -21,12 +21,12 @@ jobs:
           inputs:
             - name: resource-tutorial
           outputs:
-            - name: some-files
+            - name: myfolder
 
           run:
             path: resource-tutorial/tutorials/basic/task-outputs-to-inputs/create_some_files.sh
 
-      - task: show-some-files
+      - task: show-myfolder
         config:
           platform: linux
           image_resource:
@@ -35,7 +35,7 @@ jobs:
 
           inputs:
             - name: resource-tutorial
-            - name: some-files
+            - name: myfolder
 
           run:
             path: resource-tutorial/tutorials/basic/task-outputs-to-inputs/show_files.sh
