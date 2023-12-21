@@ -9,6 +9,7 @@ git clone resource-gist updated-gist
 
 cd updated-gist
 date > bumpme
+cat bumpme
 
 git config --global user.email "necatiunal2005@gmail.com"
 git config --global user.name "Nec2005"
