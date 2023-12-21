@@ -3,7 +3,8 @@
 set -e # fail fast
 set -x # print commands
 
-apt-get install git
+
+git -version
 git clone resource-gist updated-gist
 
 cd updated-gist
