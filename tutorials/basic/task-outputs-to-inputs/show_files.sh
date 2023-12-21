@@ -1,3 +1,4 @@
 #!/bin/sh
 
-ls some-files/*
+ls myfolder/*
+cat file4
