@@ -1,0 +1,55 @@
+resources:
+# The repo with our Dockerfile
+- name: concourse-examples
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/Nec2005/concourse-tutorial.git
+    branch: dev
+
+# Where we will push the image
+- name: simple-image
+  type: registry-image
+  icon: docker
+  source:
+    repository: ((docker-hub-username))/((appname))
+    username: ((docker-hub-username))
+    password: ((docker-hub-password))
+
+jobs:
+- name: build-and-push
+  plan:
+  - get: concourse-examples
+  - task: build-task-image
+    privileged: true
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: concourse/oci-build-task
+      inputs:
+      - name: concourse-examples
+      outputs:
+      - name: image
+      params:
+        CONTEXT: concourse-examples/tutorials/miscellaneous/docker-images/docker
+      run:
+        path: build
+  - put: simple-image
+    params:
+      image: image/image.tar
+      version: v0.0.1
+      bump_aliases: true
+  - task: run
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: ((docker-hub-username))/((appname))
+      run:
+        path: /bin/hello-world
+        args: []
+      params:
+        NAME: ((docker-hub-username))

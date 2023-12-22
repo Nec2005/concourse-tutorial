@@ -3,19 +3,19 @@ resources:
   - name: tutorial
     type: git
     source:
-      uri: https://github.com/drnic/concourse-tutorial.git
-      branch: develop
+      uri: https://github.com/Nec2005/concourse-tutorial.git
+      branch: dev
 
   - name: hello-world-registry-image
     type: registry-image
     source:
-      email: ((docker-hub-email))
+      #email: ((docker-hub-email))
       username: ((docker-hub-username))
       password: ((docker-hub-password))
-      repository: ((docker-hub-username))/concourse-tutorial-hello-world
+      repository: ((docker-hub-username))/((appname))
 
 jobs:
-  - name: publish
+  - name: build-and-push
     public: true
     plan:
       - get: tutorial
@@ -28,7 +28,7 @@ jobs:
           image_resource:
             type: registry-image
             source:
-              repository: ((docker-hub-username))/concourse-tutorial-hello-world
+              repository: ((docker-hub-username))/((appname))
           run:
             path: /bin/hello-world
             args: []
