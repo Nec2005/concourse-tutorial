@@ -4,13 +4,13 @@ resources:
     type: git
     source:
       uri: https://github.com/Nec2005/concourse-tutorial.git
-      branch: develop
+      branch: dev
   - name: resource-gist
     type: git
     source:
-      branch: master
-      uri: ((publishing-outputs-gist-uri))
-      private_key: ((publishing-outputs-private-key))
+      branch: main
+      uri: ((gist-uri))
+      private_key: ((private-key))
 
 jobs:
   - name: job-bump-date
@@ -22,8 +22,8 @@ jobs:
         config:
           platform: linux
           image_resource:
-            type: registry-image
-            source: {repository: Nec2005/concourse}
+            type: registry-image 
+            source: {repository: bitnami/git} #alpine image with git
 
           inputs:
             - name: resource-tutorial
@@ -32,6 +32,7 @@ jobs:
             - name: updated-gist
           run:
             path: resource-tutorial/tutorials/basic/publishing-outputs/bump-timestamp-file.sh
+
       - put: resource-gist
         params:
           repository: updated-gist
